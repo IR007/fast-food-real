@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Kirish{% endblock title %}
+
+{% block content %}
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Saytga kirish</p>
+						<h1>Kirish</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+	<!-- products -->
+	<div class="product-section mt-1 mb-1">
+		<div class="container">
+          <section class="ps-lg-4 pe-lg-3 pt-4" style="min-height:84vh">
+
+              <!-- ============================ COMPONENT LOGIN   ================================= -->
+              <div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
+                <div class="card-body">
+
+                  <h4 class="card-title mb-4">Kirish</h4>
+                  {% include "accounts/alert.html" %}
+                  <form action="{%url 'login'%}" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                      <input type="text" class="form-control" placeholder="E-pochta manzili" name="email">
+                    </div> <!-- mb-3// -->
+                    <div class="mb-3">
+                      <input type="password" class="form-control" placeholder="Parol" name='password'>
+                    </div> <!-- mb-3// -->
+
+                    <div class="mb-3">
+                      <a href="{%url 'forgot-password'%}" class="float-right">Parol yodingizdan chiqdimi?</a>
+                    </div> <!-- mb-3 form-check .// -->
+                      <br>
+                    <div class="mb-3">
+                      <button type="submit" class="btn btn-primary btn-block"> Kirish </button>
+                    </div> <!-- mb-3// -->
+                  </form>
+                </div> <!-- card-body.// -->
+              </div> <!-- card .// -->
+
+              <p class="text-center mt-4">Akkountingiz yo'qmi? <a href="{%url 'register'%}">Ro'yxatdan o'tish</a></p>
+              <br><br>
+              <!-- ============================ COMPONENT LOGIN  END.// ================================= -->
+
+          </section>
+		</div>
+	</div>
+	<!-- end products -->
+{% endblock content %}

@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Xarid{% endblock title %}
+
+{% block content %}
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Mazzali fast food</p>
+						<h1>Xarid</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+	<!-- products -->
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="product-filters">
+						<ul>
+							<li class="active" data-filter="*">Barchasi</li>
+							{% for category in categories %}
+								<li data-filter=".{{ category.id }}">{{ category.name }}</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="row product-lists">
+				{% for category in categories %}
+					{% for burger in category.burgers.all %}
+						<div class="col-lg-4 col-md-6 text-center product-item {{category.id}}">
+							<div class="single-product-item">
+								<div class="product-image">
+									<a href="{% url 'product-detail' burger.pk %}"><img src="{{ burger.photo.url}}" alt=""></a>
+								</div>
+								<h3>{{burger.name}}</h3>
+								<p class="product-price"><span>{{burger.gram}} gm</span> {{ burger.price }} - so'm</p>
+								<a href="{% url 'product-detail' burger.pk %}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Xarid qilish </a>
+							</div>
+						</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
+
+		</div>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const filterButtons = document.querySelectorAll('.product-filters li');
+				const productItems = document.querySelectorAll('.product-item');
+
+				filterButtons.forEach(button => {
+					button.addEventListener('click', function () {
+						const filterValue = this.getAttribute('data-filter');
+
+						productItems.forEach(item => {
+							if (filterValue === '*' || item.classList.contains(filterValue.slice(1))) {
+								item.style.display = 'block';
+							} else {
+								item.style.display = 'none';
+							}
+						});
+
+						// Remove active class from all buttons and add it to the clicked button
+						filterButtons.forEach(btn => btn.classList.remove('active'));
+						this.classList.add('active');
+					});
+				});
+			});
+		</script>
+
+	</div>
+	<!-- end products -->
+{% endblock content %}

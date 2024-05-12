@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>To'lovni amalga oshiring</p>
+						<h1>To'lov</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+<!-- payment_list.html -->
+	<div class="product-section mt-80 mb-75">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="featured-text">
+						<h3>Buyurtma uchun to'lovni amalga oshirish, buyurtma id raqami: {{ order_id }}</h3>
+						<p>Umumiy summa: {{ total_amount }} so'm</p>
+						<form action="{% url 'process_payment' %}" method="POST">
+							{% csrf_token %}
+							<label for="payment_method">To'lov usulini tanlang:</label>
+							<select name="payment_method" id="payment_method">
+								<option value="PayPal">PayPal</option>
+								<!-- Add other payment methods if needed -->
+							</select>
+							<button type="submit">To'lov jarayoni</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock%}

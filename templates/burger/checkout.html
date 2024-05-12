@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Mahsulotni tekshirish {% endblock title %}
+
+{% block content %}
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Buyurtma uchun tekshirishdan o'ting</p>
+						<h1>Tekshirish</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+
+<section class="bg-light py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 col-lg-8 mb-4">
+
+
+        <!-- Checkout -->
+        <div class="card shadow-0 border">
+          <div class="p-4">
+            <h5 class="card-title mb-3">Mening hisobim</h5>
+            <div class="row">
+              <div class="col-6 mb-3">
+                <p class="mb-0">Ism</p>
+                <div class="form-outline">
+                  <input type="text" name="first_name" placeholder="Ismingizni kiriting" required />
+                </div>
+              </div>
+
+              <div class="col-6">
+                <p class="mb-0">Familiya</p>
+                <div class="form-outline">
+                  <input type="text" name="last_name" placeholder="Familiyangizni kiriting" required />
+                </div>
+              </div>
+
+              <div class="col-6 mb-3">
+                <p class="mb-0">Telefon raqam</p>
+                <div class="form-outline">
+                   <input type="text" name="phone" placeholder="Raqamingizni kiriting" required />
+                </div>
+              </div>
+
+              <div class="col-6 mb-3">
+                <p class="mb-0">E-pochta manzili</p>
+                <div class="form-outline">
+                  <input type="text" name="email" placeholder="E-pochta manzilingiz" required />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+              <label class="form-check-label" for="flexCheckDefault">Meni yangiliklardan xabardor qilib turing</label>
+            </div>
+
+            <hr class="my-4" />
+
+            <h5 class="card-title mb-3">Yetkazib berish usullari</h5>
+
+            <div class="row mb-3">
+              <div class="col-lg-4 mb-3">
+                <!-- Default checked radio -->
+                <div class="form-check h-100 border rounded-3">
+                  <div class="p-3">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked />
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Tez yetkazib berish <br />
+                      <small class="text-muted">Taxi orqali (10-30min)</small>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 mb-3">
+                <!-- Default radio -->
+                <div class="form-check h-100 border rounded-3">
+                  <div class="p-3">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Yetkazib berish <br />
+                      <small class="text-muted">Kuryer orqali (30-60min)</small>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 mb-3">
+                <!-- Default radio -->
+                <div class="form-check h-100 border rounded-3">
+                  <div class="p-3">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" />
+                    <label class="form-check-label" for="flexRadioDefault3">
+                      Restorandan olib ketish <br />
+                      <small class="text-muted">Bizning do'konimizga keling </small>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-8 mb-3">
+                <p class="mb-0">Manzil</p>
+                <div class="form-outline">
+                  <input  placeholder="Manzilingizni kiriting" name="address" required/>
+                </div>
+              </div>
+
+              <div class="col-sm-4 mb-3">
+                <p class="mb-0">Shahar</p>
+                <select class="form-select">
+                  <option value="1">Tashkent</option>
+                </select>
+              </div>
+
+              <div class="col-sm-4 mb-3">
+                <p class="mb-0">Ko'cha</p>
+                <div class="form-outline">
+                  <input type="text" name="state" placeholder="Ko'cha nomi" required />
+                </div>
+              </div>
+
+              <div class="col-sm-4 col-6 mb-3">
+                <p class="mb-0">Uy raqami</p>
+                <div class="form-outline">
+                  <input type="text" placeholder="Uy raqami" name="order_note"/>
+                </div>
+              </div>
+
+              <div class="col-sm-4 col-6 mb-3">
+                <p class="mb-0">Xonadon</p>
+                <div class="form-outline">
+                  <input type="text" placeholder="Xonadon raqami" id="typeText" class="form-control" />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" />
+              <label class="form-check-label" for="flexCheckDefault1">Manzilni saqlash</label>
+            </div>
+
+            <div class="mb-3">
+              <p class="mb-0">Sotuvchiga xabar</p>
+              <div class="form-outline">
+                <textarea class="form-control" placeholder="Misol uchun: men biror do'kon yonidaman" id="textAreaExample1" rows="2"></textarea>
+              </div>
+            </div>
+
+            <div class="float-end">
+              <a href="{% url 'cart' %}" class="btn btn-light border">Orqaga</a>
+              <a class="btn btn-success border" href="{% url 'process_payment' %}">Tasdiqlash</a>
+            </div>
+          </div>
+        </div>
+        <!-- Checkout -->'
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- Section: Links  -->
+
+</footer>
+<!-- Footer -->
+{% endblock content %}
